@@ -32,12 +32,18 @@ class PostView extends StatelessWidget {
                     itemBuilder: (BuildContext context, int index) {
                       return Column(
                         children: [
+                          index == 0
+                              ? ElevatedButton(
+                                  onPressed: () =>
+                                      context.push(AppRout.todoView),
+                                  child: Text("go to Todo"))
+                              : SizedBox(),
                           ListTile(
                             title: Text(state.posts[index].title),
                           ),
                           ElevatedButton(
                             onPressed: () {
-                              context.push(AppRouts.postDetailsView,
+                              context.push(AppRout.postDetailsView,
                                   extra: state.posts[index]);
                             },
                             child: const Text("View Details"),
